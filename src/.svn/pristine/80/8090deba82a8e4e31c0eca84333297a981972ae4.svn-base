@@ -1,0 +1,117 @@
+import Taro, { Component, Config } from '@tarojs/taro'
+import { View,} from '@tarojs/components'
+import {} from 'taro-ui'
+
+
+import  './incident.scss'
+
+import url from '../../utils/url'
+
+export default class Incident extends Component {
+
+  /**
+   * 指定config的类型声明为: Taro.Config
+   *
+   * 由于 typescript 对于 object 类型推导只能推出 Key 的基本类型
+   * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
+   * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
+   */
+  config: Config = {
+    navigationBarTitleText: '任务详情'
+  }
+
+  state={
+          taskdetall:{
+            task: {
+              id: "",
+              username: "",
+              openid: "",
+              title: "",
+              content: "",
+              date: "",
+              length_time: "",
+              complete_time: "",
+              speed: "",
+              state: "",
+              create_time: ""
+              },
+              smalltask: [
+              {
+              title: "",
+              content: []
+              },
+              {
+              title: "",
+              content: []
+              }
+              ]
+          },
+          taskid:''
+        }
+
+
+  componentWillMount () {
+
+    this.setState({
+      taskid:this.$router.params.taskid
+    })
+
+      //载入主线任务
+      Taro.request({
+        url:url.locality_address+'/v1/work/get-smalltask',
+        data:{
+          openid:Taro.getStorageSync('openid'),
+          taskid:this.$router.params.taskid
+        }
+      }).then((res)=>{
+          if(res.data.code==200){
+              this.setState({
+                taskdetall:res.data.result
+              })
+              Taro.setNavigationBarTitle({
+                title:res.data.result.task.title
+              })
+          }else{
+            Taro.showToast({
+              title:'参数错误!',
+              icon:'none'
+            })
+          }
+      }).catch((e)=>{
+        Taro.showToast({
+          title:'网络错误!',
+          icon:'none'
+        })
+      })
+  
+      this.setState({
+        locktaskstate:Taro.getStorageSync('locktaskstate')
+                  }
+      )
+
+  }
+
+  componentDidMount () {
+
+  }
+
+  componentWillUnmount () {
+
+  }
+
+  componentDidShow () {
+  
+  }
+
+  componentDidHide () { }
+
+  render () {
+    
+    
+    return(
+    <View>hello</View>
+    )
+  }
+
+}
+

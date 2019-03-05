@@ -1,0 +1,48 @@
+<block>
+    <view class="index">
+        <view class="at-article">
+            <view class="at-article__h1">{{taskdetall.task.title}}</view>
+            <view class="at-article__info">{{taskdetall.task.create_time}}创建</view>
+            <view class="at-article__content">
+                <view class="at-article__section">
+                    <view class="at-article__p">
+                        <scroll-view class="scrollview" scroll-y="{{true}}" scroll-with-animation="{{true}}" style="height: 100px;">
+                            <view class="">{{taskdetall.task.content}}</view>
+                        </scroll-view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <at-divider content="事件" __triggerObserer="{{ _triggerObserer }}" fontColor="#2d8cf0" lineColor="#2d8cf0"></at-divider>
+        <scroll-view class="scrollview" scroll-y="{{true}}" scroll-with-animation="{{true}}" style="{{anonymousState__temp}}">
+            <view class="timeline">
+                <at-timeline pending="{{true}}" __triggerObserer="{{ _triggerObserer }}" items="{{taskdetall.smalltask}}"></at-timeline>
+            </view>
+        </scroll-view>
+        <view class="addbutton" bindtap="addincident">
+            <at-tag size="normal" __triggerObserer="{{ _triggerObserer }}" type="primary" active="{{true}}">
+                <at-icon value="add" __triggerObserer="{{ _triggerObserer }}" size="20" color="rgb(255,255,255)"></at-icon>
+            </at-tag>
+        </view>
+        <at-modal isOpened="{{showaddincidentmodel}}" __triggerObserer="{{ _triggerObserer }}" closeOnClickOverlay="{{false}}" bindonclose="closeModal" __fn_onClose="{{true}}" data-e-onclose-so="this" data-e-onclose-a-a="{{1}}" data-e-onclose-a-b="Modal被关闭了">
+            <at-modal-header __triggerObserer="{{ _triggerObserer }}">添加事件</at-modal-header>
+            <at-modal-content __triggerObserer="{{ _triggerObserer }}">
+                <view class="addincident">
+                    <view class="inputincidenttap">
+                        <at-tag size="normal" __triggerObserer="{{ _triggerObserer }}" className="includetap" type="primary" wx:for="{{addincidentvalue}}" wx:for-item="item">{{item}}</at-tag>
+                    </view>
+                    <view class="inputincident">
+                        <at-input name="value1" __triggerObserer="{{ _triggerObserer }}" type="text" placeholder="事件" value="{{addincidentvalueitem}}" bindonchange="handleChange" customStyle="border:1px solid  #d6e4ef;padding:15rpx 0;border-radius:8rpx;" __fn_onChange="{{true}}" data-e-onchange-so="this"></at-input>
+                        <at-tag size="small" __triggerObserer="{{ _triggerObserer }}" type="primary" bindonclick="addtag" active="{{true}}" __fn_onClick="{{true}}">
+                            <at-icon value="add" __triggerObserer="{{ _triggerObserer }}" size="10" color="rgb(255,255,255)"></at-icon>
+                        </at-tag>
+                    </view>
+                </view>
+            </at-modal-content>
+            <at-modal-action __triggerObserer="{{ _triggerObserer }}">
+                <button bindtap="closeModal" data-e-tap-so="this" data-e-tap-a-a="{{1}}" data-e-tap-a-b="点击了取消">取消</button>
+                <button style="color:#6190E8" bindtap="AddIncident" data-e-tap-so="this" data-e-tap-a-a="{{1}}" data-e-tap-a-b="点击了确定">确定</button>
+            </at-modal-action>
+        </at-modal>
+    </view>
+</block>

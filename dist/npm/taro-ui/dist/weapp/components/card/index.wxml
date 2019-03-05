@@ -1,0 +1,21 @@
+<block>
+    <view bindtap="handleClick" class="{{rootClass}}">
+        <view class="at-card-header">
+            <block wx:if="{{thumb}}">
+                <view class="at-card-header__thumb">
+                    <image class="at-card-header__thumb-info" mode="scaleToFill" src="{{thumb}}"></image>
+                </view>
+            </block><text class="at-card-header__title">{{title}}</text>
+            <block wx:if="{{extra}}"><text class="at-card-header__extra">{{extra}}</text>
+            </block>
+        </view>
+        <view class="at-card-content">
+            <view class="at-card-content__info">
+                <slot></slot>
+            </view>
+            <block wx:if="{{note}}">
+                <view class="at-card-content__note">{{note}}</view>
+            </block>
+        </view>
+    </view>
+</block>

@@ -1,0 +1,14 @@
+<block>
+    <view class="index">
+        <at-avatar className="icon" __triggerObserer="{{ _triggerObserer }}" openData="{{userinfo}}" circle="{{true}}" size="normal"></at-avatar>
+        <view class="formstyle">
+            <picker mode="selector" range="{{department}}" bindchange="changepicker" value="{{0}}" class="picker">
+                <view class="itemcontextbindname"><text class="itemText">部门：</text><text class="itemValue">{{mydepartment}}</text>
+                </view>
+            </picker>
+            <at-input name="value" __triggerObserer="{{ _triggerObserer }}" type="text" placeholder="请输入姓名" value="{{value}}" bindonchange="handleChange" className="inputStyle" customStyle="padding-left:5px; " __fn_onChange="{{true}}" data-e-onchange-so="this"></at-input>
+            <at-input name="value" __triggerObserer="{{ _triggerObserer }}" type="number" placeholder="请输入手机号码" value="{{phonenumber}}" bindonchange="changePhone" className="inputStyle" customStyle="padding-left:5px; " __fn_onChange="{{true}}" data-e-onchange-so="this"></at-input>
+            <at-button customStyle="margin-top:20px; height:35px; line-height:35px;" __triggerObserer="{{ _triggerObserer }}" size="normal" type="primary" bindonclick="submitname" __fn_onClick="{{true}}">提交</at-button>
+        </view>
+    </view>
+</block>

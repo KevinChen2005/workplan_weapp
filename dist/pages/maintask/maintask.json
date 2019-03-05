@@ -1,0 +1,18 @@
+{
+  "usingComponents": {
+    "at-card": "../../npm/taro-ui/dist/weapp/components/card/index",
+    "at-progress": "../../npm/taro-ui/dist/weapp/components/progress/index",
+    "at-icon": "../../npm/taro-ui/dist/weapp/components/icon/index",
+    "at-switch": "../../npm/taro-ui/dist/weapp/components/switch/index",
+    "at-modal": "../../npm/taro-ui/dist/weapp/components/modal/index",
+    "at-modal-header": "../../npm/taro-ui/dist/weapp/components/modal/header/index",
+    "at-modal-content": "../../npm/taro-ui/dist/weapp/components/modal/content/index",
+    "at-input": "../../npm/taro-ui/dist/weapp/components/input/index",
+    "at-textarea": "../../npm/taro-ui/dist/weapp/components/textarea/index",
+    "at-modal-action": "../../npm/taro-ui/dist/weapp/components/modal/action/index",
+    "at-action-sheet": "../../npm/taro-ui/dist/weapp/components/action-sheet/index",
+    "at-action-sheet-item": "../../npm/taro-ui/dist/weapp/components/action-sheet/body/item/index",
+    "at-slider": "../../npm/taro-ui/dist/weapp/components/slider/index"
+  },
+  "navigationBarTitleText": "主线任务"
+}

@@ -1,0 +1,16 @@
+<block>
+    <view class="{{anonymousState__temp}}" style="{{anonymousState__temp2}}">
+        <view class="at-switch__title">{{title}}</view>
+        <view class="{{anonymousState__temp3}}">
+            <view class="at-switch__mask"></view>
+            <block>
+                <block wx:if="{{checked}}">
+                    <switch class="at-switch__switch" checked="{{true}}" color="{{color}}" bindchange="handleChange" data-e-change-so="this"></switch>
+                </block>
+                <block wx:else>
+                    <switch class="at-switch__switch" color="{{color}}" bindchange="handleChange" data-e-change-so="this"></switch>
+                </block>
+            </block>
+        </view>
+    </view>
+</block>

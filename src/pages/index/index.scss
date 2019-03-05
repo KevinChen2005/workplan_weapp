@@ -1,0 +1,306 @@
+
+
+page{
+   background:white;
+   height: 100%;
+   width: 100%;
+}
+
+.index{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+}
+
+.title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 20px;
+
+    .userinfo{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
+
+.touxiang{
+    margin: 10px 0px ;
+    margin-right: 10px;
+}
+
+.username{
+    color: black;
+    font-size: 25px;
+        font-weight: 500;
+}
+
+.currenttime{
+    font-size: 25px;
+    color: black;
+    font-weight: 500;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex: 1;
+}
+
+.atheight{
+    width: 100%;
+}
+
+.table{
+    display: flex;
+    width: 220*7px;
+    align-items: center;
+    flex-direction: column;
+   
+}
+
+.tabletitle{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: 220*7px;
+}
+.border_top_bottom{
+    border-bottom: 1px solid  black;
+    border-top: 1px solid  black;
+}
+
+.timelist{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.itemtitle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 220px;
+    height: 50px;
+    background: white;
+    border-right: 1px solid  black;
+    border-bottom: 1px solid  black;
+    border-top: 1px solid  black;
+}
+
+.itemcontext{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 220px;
+    background: white;
+    border-right: 1px solid  black;
+    // border-top: 1px solid  black;
+    border-bottom: 1px solid  black;
+    height: 50px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    
+}
+
+.itemcontext1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 220px;
+    background: white;
+    height: 50px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.itemtitle_longfield{
+    width: 220*2;
+}
+
+.noleftline{
+    border-left: none;
+}
+.noborder{
+    border: none;
+    text-align: center;
+}
+.itemcontextCate {
+    border: none;
+    text-align: center;
+    line-height: 50px;
+    width: 200px;
+    height: 50px;
+}
+
+.itemtitleplus{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50px;
+    margin-left:-1px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.bottom_self{
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding: 5px;
+}
+
+.bottom_value{
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 5px;
+    height: 80px;
+}
+
+
+.scrollview{
+    border-left: 1px solid  black;
+}
+.scrollview1{
+    border-left: 1px solid  black;
+    width:90px;
+    height:50px;
+    border-right: 1px solid  black;
+}
+
+.logcontext{
+    display:flex ;
+    flex-direction: row;
+
+}
+
+.timelistscroll{
+    
+    width: 90px；
+}
+
+.timelistview{
+    display: flex;
+    flex-direction: column;
+    width: 90px;
+ 
+}
+
+.test1{
+   margin-top: 0px;
+}
+
+.text2{
+    width: 220px;
+    text-align: center;
+}
+
+.task{
+    display: flex;
+    align-items: center;
+    line-height: 25px;
+
+    .text{
+        font-size: 25px;
+        font-weight: 500;
+    }
+}
+
+.delmode{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    width: 100%;
+    flex-direction: column
+}
+
+
+.itemtitle1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 90px;
+    height: 50px;
+    background: white;
+    border-left: 1px solid  black;
+    border-bottom: 1px solid  black;
+    border-top: 1px solid  black;
+    
+}
+
+.itemcontext1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 90px;
+    background: white;
+    border-left: 1px solid  black;
+    border-bottom: 1px solid  black;
+    height: 50px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.maintask{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    background: white;
+}
+
+.maintaskempty{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: white;
+    height: 150px;
+}
+
+
+
+.maintaskscroll{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 150px;
+    background: white;
+}
+
+.maintaskitem{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50px;
+    margin: 0 10px 0 10px 
+}
+
+.tasktitle{
+    font-size: 25px;
+    width: 25%;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.addcontextarea{
+    width: 100%;
+}

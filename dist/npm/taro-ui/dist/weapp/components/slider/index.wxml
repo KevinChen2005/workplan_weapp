@@ -1,0 +1,10 @@
+<block>
+    <view class="{{anonymousState__temp}}" style="{{anonymousState__temp2}}">
+        <view class="at-slider__inner">
+            <slider min="{{min}}" max="{{max}}" step="{{step}}" value="{{_value}}" disabled="{{disabled}}" active-color="{{activeColor}}" background-color="{{backgroundColor}}" block-size="{{blockSize}}" block-color="{{blockColor}}" bindchanging="handleChanging" bindchange="handleChange" data-e-changing-so="this" data-e-change-so="this"></slider>
+        </view>
+        <block wx:if="{{showValue}}">
+            <view class="at-slider__text">{{'' + _value}}</view>
+        </block>
+    </view>
+</block>

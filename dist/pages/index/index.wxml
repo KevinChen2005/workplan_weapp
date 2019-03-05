@@ -1,0 +1,227 @@
+<block>
+    <view class="index">
+        <at-noticebar marquee="{{true}}" __triggerObserer="{{ _triggerObserer }}" speed="50">欢迎使用好玩工作日志系统</at-noticebar>
+        <view class="title">
+            <view class="userinfo">
+                <at-avatar className="touxiang" __triggerObserer="{{ _triggerObserer }}" openData="{{userinfo}}" circle="{{true}}" size="small"></at-avatar>
+                <block wx:if="{{register.state}}"><text class="username">{{department}}- </text>
+                </block><text class="username">{{register.state ? username : '欢迎'}}</text>
+            </view><text class="currenttime">{{currenttime}}</text>
+            <block wx:if="{{register.state}}">
+                <view class="task" bindtap="tomaintask"><text class="text">主线任务</text>
+                    <at-icon className="icon" __triggerObserer="{{ _triggerObserer }}" value="clock" size="15" color="#888"></at-icon>
+                </view>
+            </block>
+        </view>
+        <scroll-view class="maintaskscroll" scroll-y="{{true}}" scroll-with-animation="{{true}}" id="ScrollViewtask">
+            <block wx:if="{{maintask.length <= 0}}">
+                <view class="maintaskempty"><text>暂无任务</text>
+                </view>
+            </block>
+            <block wx:if="{{maintask.length > 0}}">
+                <view class="maintask">
+                    <view class="maintaskitem" wx:for="{{loopArray6}}" wx:for-item="item"><text class="tasktitle">{{item.$original.title}}</text>
+                        <view style="flex:1">
+                            <at-progress percent="{{item.$loopState__temp11}}" __triggerObserer="{{ _triggerObserer }}" status="{{item.$loopState__temp13}}"></at-progress>
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </scroll-view>
+        <block wx:if="{{!register.state}}">
+            <view class="center">
+                <at-button className="goregster" __triggerObserer="{{ _triggerObserer }}" type="primary" bindonclick="goregister" __fn_onClick="{{true}}">请绑定用户姓名</at-button>
+            </view>
+        </block>
+        <block wx:if="{{register.state}}">
+            <at-tabs current="{{current}}" __triggerObserer="{{ _triggerObserer }}" tabList="{{tabList}}" bindonclick="handleClick" swipeable="{{false}}" __fn_onClick="{{true}}" data-e-onclick-so="this">
+                <at-tabs-pane current="{{current}}" __triggerObserer="{{ _triggerObserer }}" index="{{0}}">
+                    <view class="test1">
+                        <view class="itemtitleplus" id="ScrollView222" bindtouchstart="touchstart">
+                            <scroll-view class="scrollview1" scroll-x="{{true}}" scroll-with-animation="{{true}}">
+                                <view class="itemtitle1">时间</view>
+                            </scroll-view>
+                            <scroll-view class="" scroll-x="{{true}}" scroll-with-animation="{{true}}" style="{{'width:' + (systeminfo.windowWidth - 45) + 'px;'}}" scroll-left="{{scrolltitlex}}" bindscroll="scrollmovex" id="ScrollView222">
+                                <view class="tabletitle">
+                                    <view class="itemtitle" wx:for="{{itemtitles}}" wx:for-item="item">{{item}}</view>
+                                </view>
+                            </scroll-view>
+                        </view>
+                        <view class="logcontext">
+                            <view id="ScrollView111" bindtouchstart="touchstart">
+                                <scroll-view class="timelistscroll" scroll-y="{{true}}" scroll-with-animation="{{true}}" style="{{anonymousState__temp9}}" scroll-top="{{scrolltitley}}" bindscroll="scrollmovey" id="ScrollView111">
+                                    <view class="timelistview">
+                                        <view id="{{'work_start_time@@' + item.$original.id}}" style="{{item.$loopState__temp6}}" class="itemcontext1" wx:for="{{loopArray2}}" wx:for-item="item">{{item.$original.work_start_time}}</view>
+                                    </view>
+                                </scroll-view>
+                            </view>
+                            <view id="scrollcontext" bindtouchstart="touchstart">
+                                <scroll-view class="scrollview" scroll-x="{{true}}" scroll-y="{{true}}" scroll-with-animation="{{true}}" style="{{'width:' + (systeminfo.windowWidth - 45) + 'px;' + systemheight}}" bindscroll="scrollmove" scroll-top="{{contextscrolltitley}}" scroll-left="{{contextscrolltitlex}}" id="scrollcontext">
+                                    <view class="table">
+                                        <view class="tabletitle" wx:for="{{loopArray5}}" wx:for-item="item">
+                                            <view id="{{'length_time@@' + item.$original.id}}" bindtap="showrankmodel" class="itemcontext">{{item.$original.length_time}}</view>
+                                            <view id="{{'category@@' + item.$original.id}}" class="itemcontext">
+                                                <picker class="itemcontextCate1" id="{{'category@@' + item.$original.id}}" mode="selector" range="{{categorys}}" bindchange="onCategoryChange" style="width:100%;height:100%" value="{{item.selIndex}}">
+                                                    <view class="itemcontextCate">{{item.$original.category}}</view>
+                                                </picker>
+                                            </view>
+                                            <view id="{{'work_project@@' + item.$original.id}}" bindtap="changemessage" class="itemcontext">{{item.$original.work_project}}</view>
+                                            <view id="{{'work_content@@' + item.$original.id}}" bindtap="changemessage" class="itemcontext">{{item.$original.work_content}}</view>
+                                            <view id="{{'work_efficiency@@' + item.$original.id}}" bindtap="showrankmodel" class="itemcontext">{{item.$original.work_efficiency}}</view>
+                                            <view id="{{'work_effect@@' + item.$original.id}}" class="itemcontext">
+                                                <picker id="{{'work_effect@@' + item.$original.id}}" mode="selector" range="{{item.maskTitles}}" bindchange="onEffChange" style="width:100%;height:100%" value="{{item.selIndexEff}}">
+                                                    <view class="itemcontextCate">{{item.$original.work_effect}}</view>
+                                                </picker>
+                                            </view>
+                                            <view id="{{'work_myself@@' + item.$original.id}}" bindtap="showrankmodel" class="itemcontext">{{item.$original.work_myself}}</view>
+                                        </view>
+                                    </view>
+                                </scroll-view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="bottom_self">今日工作要点自评:</view>
+                    <view id="{{'daily_sum@@' + twodayago_ext.id}}" bindtap="changemessage_ext" class="bottom_value">{{twodayago_ext.daily_sum}}</view>
+                </at-tabs-pane>
+                <at-tabs-pane current="{{current}}" __triggerObserer="{{ _triggerObserer }}" index="{{1}}">
+                    <view class="test1">
+                        <view class="itemtitleplus" id="ScrollView222" bindtouchstart="touchstart">
+                            <scroll-view class="scrollview1" scroll-x="{{true}}" scroll-with-animation="{{true}}">
+                                <view class="itemtitle1">时间</view>
+                            </scroll-view>
+                            <scroll-view class="" scroll-x="{{true}}" scroll-with-animation="{{true}}" style="{{'width:' + (systeminfo.windowWidth - 45) + 'px;'}}" scroll-left="{{scrolltitlex}}" bindscroll="scrollmovex" id="ScrollView222">
+                                <view class="tabletitle">
+                                    <view class="itemtitle" wx:for="{{itemtitles}}" wx:for-item="item">{{item}}</view>
+                                </view>
+                            </scroll-view>
+                        </view>
+                        <view class="logcontext">
+                            <view id="ScrollView111" bindtouchstart="touchstart">
+                                <scroll-view class="timelistscroll" scroll-y="{{true}}" scroll-with-animation="{{true}}" style="{{anonymousState__temp8}}" scroll-top="{{scrolltitley}}" bindscroll="scrollmovey" id="ScrollView111">
+                                    <view class="timelistview">
+                                        <view id="{{'work_start_time@@' + item.$original.id}}" style="{{item.$loopState__temp4}}" class="itemcontext1" wx:for="{{loopArray1}}" wx:for-item="item">{{item.$original.work_start_time}}</view>
+                                    </view>
+                                </scroll-view>
+                            </view>
+                            <view id="scrollcontext" bindtouchstart="touchstart">
+                                <scroll-view class="scrollview" scroll-x="{{true}}" scroll-y="{{true}}" scroll-with-animation="{{true}}" style="{{'width:' + (systeminfo.windowWidth - 45) + 'px;' + systemheight}}" bindscroll="scrollmove" scroll-top="{{contextscrolltitley}}" scroll-left="{{contextscrolltitlex}}" id="scrollcontext">
+                                    <view class="table">
+                                        <view class="tabletitle" wx:for="{{loopArray4}}" wx:for-item="item">
+                                            <view id="{{'length_time@@' + item.$original.id}}" bindtap="showrankmodel" class="itemcontext">{{item.$original.length_time}}</view>
+                                            <view id="{{'category@@' + item.$original.id}}" class="itemcontext">
+                                                <picker class="itemcontextCate" id="{{'category@@' + item.$original.id}}" mode="selector" range="{{categorys}}" bindchange="onCategoryChange" style="width:100%;height:100%" value="{{item.selIndex}}">
+                                                    <view class="itemcontextCate">{{item.$original.category}}</view>
+                                                </picker>
+                                            </view>
+                                            <view id="{{'work_project@@' + item.$original.id}}" bindtap="changemessage" class="itemcontext">{{item.$original.work_project}}</view>
+                                            <view id="{{'work_content@@' + item.$original.id}}" bindtap="changemessage" class="itemcontext">{{item.$original.work_content}}</view>
+                                            <view id="{{'work_efficiency@@' + item.$original.id}}" bindtap="showrankmodel" class="itemcontext">{{item.$original.work_efficiency}}</view>
+                                            <view id="{{'work_effect@@' + item.$original.id}}" class="itemcontext">
+                                                <picker id="{{'work_effect@@' + item.$original.id}}" mode="selector" range="{{item.maskTitles}}" bindchange="onEffChange" style="width:100%;height:100%" value="{{item.selIndexEff}}">
+                                                    <view class="itemcontextCate">{{item.$original.work_effect}}</view>
+                                                </picker>
+                                            </view>
+                                            <view id="{{'work_myself@@' + item.$original.id}}" bindtap="showrankmodel" class="itemcontext">{{item.$original.work_myself}}</view>
+                                        </view>
+                                    </view>
+                                </scroll-view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="bottom_self">今日工作要点自评:</view>
+                    <view id="{{'daily_sum@@' + onedayago_ext.id}}" bindtap="changemessage_ext" class="bottom_value">{{onedayago_ext.daily_sum}}</view>
+                </at-tabs-pane>
+                <at-tabs-pane current="{{current}}" __triggerObserer="{{ _triggerObserer }}" index="{{2}}">
+                    <view class="test1">
+                        <view class="itemtitleplus" id="ScrollView222" bindtouchstart="touchstart">
+                            <scroll-view class="scrollview1" scroll-x="{{true}}" scroll-with-animation="{{true}}">
+                                <view class="itemtitle1">时间</view>
+                            </scroll-view>
+                            <scroll-view class="" scroll-x="{{true}}" scroll-with-animation="{{true}}" style="{{'width:' + (systeminfo.windowWidth - 45) + 'px;'}}" scroll-left="{{scrolltitlex}}" bindscroll="scrollmovex" id="ScrollView222">
+                                <view class="tabletitle">
+                                    <view class="itemtitle" wx:for="{{itemtitles}}" wx:for-item="item">{{item}}</view>
+                                </view>
+                            </scroll-view>
+                        </view>
+                        <view class="logcontext">
+                            <view id="ScrollView111" bindtouchstart="touchstart">
+                                <scroll-view class="timelistscroll" scroll-y="{{true}}" scroll-with-animation="{{true}}" style="{{anonymousState__temp7}}" scroll-top="{{scrolltitley}}" bindscroll="scrollmovey" id="ScrollView111">
+                                    <view class="timelistview">
+                                        <view id="{{'work_start_time@@' + item.$original.id}}" style="{{item.$loopState__temp2}}" class="itemcontext1" wx:for="{{loopArray0}}" wx:for-item="item">{{item.$original.work_start_time}}</view>
+                                    </view>
+                                </scroll-view>
+                            </view>
+                            <view id="scrollcontext" bindtouchstart="touchstart">
+                                <scroll-view class="scrollview" scroll-x="{{true}}" scroll-y="{{true}}" scroll-with-animation="{{true}}" style="{{'width:' + (systeminfo.windowWidth - 45) + 'px;' + systemheight}}" bindscroll="scrollmove" scroll-top="{{contextscrolltitley}}" scroll-left="{{contextscrolltitlex}}" id="scrollcontext">
+                                    <view class="table">
+                                        <view class="tabletitle" wx:for="{{loopArray3}}" wx:for-item="item">
+                                            <view id="{{'length_time@@' + item.$original.id}}" bindtap="showrankmodel" class="itemcontext"><text>{{item.$original.length_time}}</text>
+                                            </view>
+                                            <view id="{{'category@@' + item.$original.id}}" class="itemcontext">
+                                                <picker id="{{'category@@' + item.$original.id}}" mode="selector" range="{{categorys}}" bindchange="onCategoryChange" style="width:100%;height:100%" value="{{item.selIndex}}">
+                                                    <view class="itemcontextCate">{{item.$original.category}}</view>
+                                                </picker>
+                                            </view>
+                                            <view id="{{'work_project@@' + item.$original.id}}" bindtap="changemessage" class="itemcontext"><text>{{item.$original.work_project}}</text>
+                                            </view>
+                                            <view id="{{'work_content@@' + item.$original.id}}" bindtap="changemessage" class="itemcontext"><text>{{item.$original.work_content}}</text>
+                                            </view>
+                                            <view id="{{'work_efficiency@@' + item.$original.id}}" bindtap="showrankmodel" class="itemcontext"><text>{{item.$original.work_efficiency}}</text>
+                                            </view>
+                                            <view id="{{'work_effect@@' + item.$original.id}}" class="itemcontext">
+                                                <picker id="{{'work_effect@@' + item.$original.id}}" mode="selector" range="{{item.maskTitles}}" bindchange="onEffChange" style="width:100%;height:100%" value="{{item.selIndexEff}}">
+                                                    <view class="itemcontextCate">{{item.$original.work_effect}}</view>
+                                                </picker>
+                                            </view>
+                                            <view id="{{'work_myself@@' + item.$original.id}}" bindtap="showrankmodel" class="itemcontext"><text>{{item.$original.work_myself}}</text>
+                                            </view>
+                                        </view>
+                                    </view>
+                                </scroll-view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="bottom_self">今日工作要点自评:</view>
+                    <view id="{{'daily_sum@@' + today_ext.id}}" bindtap="changemessage_ext" class="bottom_value">{{today_ext.daily_sum}}</view>
+                </at-tabs-pane>
+            </at-tabs>
+        </block>
+        <at-modal isOpened="{{showmodel}}" __triggerObserer="{{ _triggerObserer }}" closeOnClickOverlay="{{false}}" bindonclose="closeModal" __fn_onClose="{{true}}" data-e-onclose-so="this" data-e-onclose-a-a="{{1}}" data-e-onclose-a-b="Modal被关闭了">
+            <at-modal-header __triggerObserer="{{ _triggerObserer }}">{{modeldatatitle}}</at-modal-header>
+            <at-modal-content __triggerObserer="{{ _triggerObserer }}">
+                <block wx:if="{{showmodel}}">
+                    <at-textarea value="{{value}}" __triggerObserer="{{ _triggerObserer }}" bindonchange="handleChange" maxlength="400" placeholder="内容" className="addcontextarea" __fn_onChange="{{true}}" data-e-onchange-so="this"></at-textarea>
+                </block>
+            </at-modal-content>
+            <at-modal-action __triggerObserer="{{ _triggerObserer }}">
+                <button bindtap="closeModal" data-e-tap-so="this" data-e-tap-a-a="{{1}}" data-e-tap-a-b="点击了取消">取消</button>
+                <button style="color:#6190E8" bindtap="updatemessage" data-e-tap-so="this" data-e-tap-a-a="{{1}}" data-e-tap-a-b="点击了确定">确定</button>
+            </at-modal-action>
+        </at-modal>
+        <at-modal isOpened="{{showrankmodel}}" __triggerObserer="{{ _triggerObserer }}" closeOnClickOverlay="{{false}}" bindonclose="closeModal" __fn_onClose="{{true}}" data-e-onclose-so="this" data-e-onclose-a-a="{{1}}" data-e-onclose-a-b="Modal被关闭了">
+            <at-modal-header __triggerObserer="{{ _triggerObserer }}">{{modeldatatitle}}</at-modal-header>
+            <at-modal-content __triggerObserer="{{ _triggerObserer }}">
+                <block wx:if="{{!ischangetime}}">
+                    <at-slider step="{{0.5}}" __triggerObserer="{{ _triggerObserer }}" min="{{5}}" value="{{anonymousState__temp14}}" max="{{10}}" bindonchange="changerank" activeColor="#4285F4" backgroundColor="#BDBDBD" blockColor="#4285F4" blockSize="{{15}}" showValue="{{true}}" __fn_onChange="{{true}}"></at-slider>
+                </block>
+                <block wx:if="{{ischangetime}}">
+                    <at-slider step="{{10}}" __triggerObserer="{{ _triggerObserer }}" min="{{10}}" value="{{anonymousState__temp15}}" max="{{120}}" bindonchange="changerank" activeColor="#4285F4" backgroundColor="#BDBDBD" blockColor="#4285F4" blockSize="{{15}}" showValue="{{true}}" __fn_onChange="{{true}}"></at-slider>
+                </block>
+            </at-modal-content>
+            <at-modal-action __triggerObserer="{{ _triggerObserer }}">
+                <button bindtap="closeModal" data-e-tap-so="this" data-e-tap-a-a="{{1}}" data-e-tap-a-b="点击了取消">取消</button>
+                <button style="color:#6190E8" bindtap="updatemessage" data-e-tap-so="this" data-e-tap-a-a="{{1}}" data-e-tap-a-b="点击了确定">确定</button>
+            </at-modal-action>
+        </at-modal>
+        <at-modal isOpened="{{showmessageboolean}}" __triggerObserer="{{ _triggerObserer }}" bindonclose="closeshowModal" __fn_onClose="{{true}}" data-e-onclose-so="this" data-e-onclose-a-a="{{1}}" data-e-onclose-a-b="点击了确定">
+            <at-modal-header __triggerObserer="{{ _triggerObserer }}">{{modeldatatitle}}</at-modal-header>
+            <at-modal-content __triggerObserer="{{ _triggerObserer }}">
+                <view class="delmode"><text>{{showmaeeagecontext}}</text>
+                </view>
+            </at-modal-content>
+            <at-modal-action __triggerObserer="{{ _triggerObserer }}">
+                <button style="color:#6190E8" bindtap="closeshowModal" data-e-tap-so="this" data-e-tap-a-a="{{1}}" data-e-tap-a-b="点击了确定">确定</button>
+            </at-modal-action>
+        </at-modal>
+    </view>
+</block>

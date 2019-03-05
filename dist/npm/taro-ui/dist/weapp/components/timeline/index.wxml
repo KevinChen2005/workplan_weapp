@@ -1,0 +1,16 @@
+<block>
+    <view class="{{anonymousState__temp3}}" style="{{anonymousState__temp4}}">
+        <view class="{{item.itemRootClassName}}" wx:key="index" wx:for="{{loopArray0}}" wx:for-item="item" wx:for-index="index">
+            <view class="at-timelineitem__tail"></view>
+            <view class="{{item.dotClass}}">
+                <block wx:if="{{item.icon}}">
+                    <at-icon customStyle="{{item.$loopState__temp2}}" __triggerObserer="{{ _triggerObserer }}" value="{{item.icon}}"></at-icon>
+                </block>
+            </view>
+            <view class="at-timelineitem__content">
+                <view class="at-timelineitem__content-item">{{item.title}}</view>
+                <view class="at-timelineitem__content-item at-timelineitem__content--sub" wx:key="subIndex" wx:for="{{item.content}}" wx:for-item="sub" wx:for-index="subIndex">{{sub}}</view>
+            </view>
+        </view>
+    </view>
+</block>

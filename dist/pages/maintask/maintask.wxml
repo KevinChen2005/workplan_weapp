@@ -1,0 +1,65 @@
+<block>
+    <view class="index">
+        <view class="tasktitle">
+            <at-icon value="add" __triggerObserer="{{ _triggerObserer }}" className="titleelement" size="30" color="#888" bindonclick="showaddmodel" __fn_onClick="{{true}}"></at-icon>
+            <view class="titleelement">
+                <at-switch border="{{false}}" __triggerObserer="{{ _triggerObserer }}" bindonchange="changelockstate" customStyle="padding:0 0 0 0;" checked="{{locktaskstate}}" title="锁定" __fn_onChange="{{true}}"></at-switch>
+            </view>
+        </view>
+        <scroll-view class="scrollview" scroll-y="{{true}}" scroll-with-animation="{{true}}" style="{{anonymousState__temp5}}">
+            <view class="card" id="{{item.$original.id}}" bindtouchstart="showSheet" wx:for="{{loopArray0}}" wx:for-item="item">
+                <at-card extra="{{item.$original.create_time}}" __triggerObserer="{{ _triggerObserer }}" title="{{item.$original.title}}">{{item.$original.content}}
+                    <at-progress percent="{{item.$loopState__temp2}}" __triggerObserer="{{ _triggerObserer }}" status="{{item.$loopState__temp4}}"></at-progress>
+                </at-card>
+            </view>
+        </scroll-view>
+        <at-modal isOpened="{{showaddmodel}}" __triggerObserer="{{ _triggerObserer }}" closeOnClickOverlay="{{false}}" bindonclose="closeModal" __fn_onClose="{{true}}" data-e-onclose-so="this" data-e-onclose-a-a="{{1}}" data-e-onclose-a-b="Modal被关闭了">
+            <at-modal-header __triggerObserer="{{ _triggerObserer }}">添加任务</at-modal-header>
+            <at-modal-content __triggerObserer="{{ _triggerObserer }}">
+                <view class="addmodel">
+                    <at-input name="value1" __triggerObserer="{{ _triggerObserer }}" title="标题" type="text" placeholder="任务标题" value="{{addtitle}}" bindonchange="titleChange" customStyle="border:1px solid  #d6e4ef;padding:15rpx 0;border-radius:8rpx;" __fn_onChange="{{true}}" data-e-onchange-so="this"></at-input>
+                    <view style="width:100%">
+                        <block wx:if="{{showaddmodel}}">
+                            <at-textarea value="{{addcontext}}" __triggerObserer="{{ _triggerObserer }}" bindonchange="contextChange" maxlength="400" placeholder="计划内容" className="addcontextarea" __fn_onChange="{{true}}" data-e-onchange-so="this"></at-textarea>
+                        </block>
+                    </view>
+                </view>
+            </at-modal-content>
+            <at-modal-action __triggerObserer="{{ _triggerObserer }}">
+                <button bindtap="closeModal" data-e-tap-so="this" data-e-tap-a-a="{{1}}" data-e-tap-a-b="点击了取消">取消</button>
+                <button style="color:#6190E8" bindtap="addtask" data-e-tap-so="this" data-e-tap-a-a="{{1}}" data-e-tap-a-b="点击了确定">确定</button>
+            </at-modal-action>
+        </at-modal>
+        <at-action-sheet isOpened="{{showSheetstate}}" __triggerObserer="{{ _triggerObserer }}" bindonclose="closesheet1" bindoncancel="closesheet" cancelText="取消" title="操作" __fn_onClose="{{true}}" __fn_onCancel="{{true}}">
+            <at-action-sheet-item bindonclick="updatetime" __triggerObserer="{{ _triggerObserer }}" __fn_onClick="{{true}}">更新进度</at-action-sheet-item>
+            <at-action-sheet-item bindonclick="toincident" __triggerObserer="{{ _triggerObserer }}" __fn_onClick="{{true}}">任务详情</at-action-sheet-item>
+            <at-action-sheet-item bindonclick="deltask" __triggerObserer="{{ _triggerObserer }}" __fn_onClick="{{true}}">删除</at-action-sheet-item>
+        </at-action-sheet>
+        <at-modal isOpened="{{showupdatetime}}" __triggerObserer="{{ _triggerObserer }}" bindonclose="closeUpdateTime" __fn_onClose="{{true}}" data-e-onclose-so="this" data-e-onclose-a-a="{{1}}" data-e-onclose-a-b="Modal被关闭了">
+            <at-modal-header __triggerObserer="{{ _triggerObserer }}">更新进度</at-modal-header>
+            <at-modal-content __triggerObserer="{{ _triggerObserer }}">
+                <view class="addmodel">
+                    <view style="width:100%">
+                        <at-progress percent="{{anonymousState__temp6}}" __triggerObserer="{{ _triggerObserer }}" status="{{anonymousState__temp7}}"></at-progress>
+                        <at-slider step="{{5}}" __triggerObserer="{{ _triggerObserer }}" min="{{anonymousState__temp8}}" value="{{complete_time_temp}}" max="{{100}}" bindonchange="changeComplete_time" activeColor="#4285F4" backgroundColor="#BDBDBD" blockColor="#4285F4" blockSize="{{15}}" showValue="{{true}}" __fn_onChange="{{true}}"></at-slider>
+                    </view>
+                </view>
+            </at-modal-content>
+            <at-modal-action __triggerObserer="{{ _triggerObserer }}">
+                <button bindtap="closeUpdateTime" data-e-tap-so="this" data-e-tap-a-a="{{1}}" data-e-tap-a-b="点击了取消">取消</button>
+                <button style="color:#6190E8" bindtap="UpdateTime" data-e-tap-so="this" data-e-tap-a-a="{{1}}" data-e-tap-a-b="点击了确定">确定</button>
+            </at-modal-action>
+        </at-modal>
+        <at-modal isOpened="{{showdelTask}}" __triggerObserer="{{ _triggerObserer }}" bindonclose="closedeltask" __fn_onClose="{{true}}" data-e-onclose-so="this" data-e-onclose-a-a="{{1}}" data-e-onclose-a-b="Modal被关闭了">
+            <at-modal-header __triggerObserer="{{ _triggerObserer }}">删除任务</at-modal-header>
+            <at-modal-content __triggerObserer="{{ _triggerObserer }}">
+                <view class="delmode"><text>确定删除{{deltitle}}?</text>
+                </view>
+            </at-modal-content>
+            <at-modal-action __triggerObserer="{{ _triggerObserer }}">
+                <button bindtap="closedeltask" data-e-tap-so="this" data-e-tap-a-a="{{1}}" data-e-tap-a-b="点击了取消">取消</button>
+                <button style="color:#6190E8" bindtap="Deltask" data-e-tap-so="this" data-e-tap-a-a="{{1}}" data-e-tap-a-b="点击了确定">确定</button>
+            </at-modal-action>
+        </at-modal>
+    </view>
+</block>

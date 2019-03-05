@@ -1,0 +1,113 @@
+
+@charset "UTF-8";
+/**
+ * Default Theme
+ */
+/**
+ * Mixes a color with white. It's different from lighten()
+ *
+ * @param {color} $color
+ * @param {number (percentage)} $percent [The amout of white to be mixed in]
+ * @return {color}
+ *
+ * @example
+ *   .element {
+ *     background-color: tint(#6ecaa6 , 40%);
+ *   }
+ *
+ *   // CSS Output
+ *   .element {
+ *     background-color: #a8dfc9;
+ *   }
+ */
+/* The Color of O2Team Brand */
+/* Color */
+/* Color Palette */
+/* Text Color */
+/* Link */
+/* 背景色 */
+/* 边框颜色 */
+/* 图标颜色 */
+/* Border Radius */
+/* 透明度 */
+/* Font */
+/* Line Height */
+/* 水平间距 */
+/* 垂直间距 */
+/* 图标尺寸 */
+/* z-index */
+/* timing function */
+/**
+ * CSS cubic-bezier timing functions
+ * http://bourbon.io/docs/#timing-functions
+ */
+@-webkit-keyframes progress-active {
+  from {
+    opacity: 0.5;
+    -webkit-transform: translate(-100%);
+            transform: translate(-100%); }
+  to {
+    opacity: 0.1;
+    -webkit-transform: translate(0);
+            transform: translate(0); } }
+@keyframes progress-active {
+  from {
+    opacity: 0.5;
+    -webkit-transform: translate(-100%);
+            transform: translate(-100%); }
+  to {
+    opacity: 0.1;
+    -webkit-transform: translate(0);
+            transform: translate(0); } }
+
+.at-progress {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+  .at-progress__outer {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 100%;
+        -ms-flex: 1 1 100%;
+            flex: 1 1 100%;
+    margin-right: 0;
+    padding-right: 0; }
+    .at-progress__outer-inner {
+      width: 100%;
+      background-color: #F7F7F7;
+      border-radius: 100rpx;
+      vertical-align: middle; }
+      .at-progress__outer-inner-background {
+        height: 16rpx;
+        border-radius: 100rpx;
+        background-color: #78A4F4;
+        -webkit-transition: all 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+        -o-transition: all 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+        transition: all 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+        position: relative;
+        overflow: hidden; }
+  .at-progress__content {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 70rpx;
+        -ms-flex: 1 1 70rpx;
+            flex: 1 1 70rpx;
+    font-size: 24rpx;
+    margin-left: 10rpx;
+    text-align: center; }
+
+.at-progress--progress .at-progress__outer-inner-background::before {
+  content: "";
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 100rpx;
+  -webkit-animation: progress-active 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+          animation: progress-active 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite; }

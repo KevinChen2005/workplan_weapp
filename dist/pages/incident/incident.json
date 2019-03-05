@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "at-tag": "../../npm/taro-ui/dist/weapp/components/tag/index",
+    "at-divider": "../../npm/taro-ui/dist/weapp/components/divider/index",
+    "at-timeline": "../../npm/taro-ui/dist/weapp/components/timeline/index",
+    "at-icon": "../../npm/taro-ui/dist/weapp/components/icon/index",
+    "at-modal": "../../npm/taro-ui/dist/weapp/components/modal/index",
+    "at-modal-header": "../../npm/taro-ui/dist/weapp/components/modal/header/index",
+    "at-modal-content": "../../npm/taro-ui/dist/weapp/components/modal/content/index",
+    "at-input": "../../npm/taro-ui/dist/weapp/components/input/index",
+    "at-modal-action": "../../npm/taro-ui/dist/weapp/components/modal/action/index"
+  },
+  "navigationBarTitleText": "任务详情"
+}
