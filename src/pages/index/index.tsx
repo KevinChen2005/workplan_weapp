@@ -105,7 +105,7 @@ export default class Index extends Component {
       daily_sum: '',
     },
     categorys: ['开拓', '驱动', '实施', '维护', "协同"],
-    itemtitles: ['时长(分)', '类别', '工作项目', '工作内容及说明', '效率自评', '对应目标', '驱动自评'],
+    itemtitles: ['时长(分)', /*'类别',*/ '对应目标','工作项目', '工作内容及说明', '效率自评',  '驱动自评'],
     moment: ['9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00'],
     showmodel: false,
     modeldatatitle: '标题',
@@ -113,11 +113,12 @@ export default class Index extends Component {
     idMname: {
       work_start_time: '开始时间',
       length_time: '时长(分)',
-      category: '类别',
+      // category: '类别',
+      work_effect: '对应目标',
       work_project: '工作项目',
       work_content: '工作内容及说明',
       work_efficiency: '效率自评',
-      work_effect: '对应目标',
+      
       work_myself: '驱动自评',
     },
     targhtid: [],
@@ -498,16 +499,11 @@ export default class Index extends Component {
          } */}
 
         {/* 类别 */}
-        <View id={'category@@' + item.id} className='itemcontext'>
+        {/* <View id={'category@@' + item.id} className='itemcontext'>
           <Picker id={'category@@' + item.id} mode='selector' range={this.state.categorys} onChange={this.onCategoryChange} style='width:100%;height:100%' value={selIndex}>
             <View className='itemcontextCate'> {item.category} </View>
           </Picker>
-        </View>
-        <View id={'work_project@@' + item.id} onClick={this.changemessage} className='itemcontext'><Text>{item.work_project}</Text></View>
-        <View id={'work_content@@' + item.id} onClick={this.changemessage} className='itemcontext'><Text>{item.work_content}</Text></View>
-        <View id={'work_efficiency@@' + item.id} onClick={this.showrankmodel} className='itemcontext'>
-          <Text> {item.work_efficiency}</Text>
-        </View>
+        </View> */}
         <View id={'work_effect@@' + item.id} className='itemcontext'>
           <Picker id={'work_effect@@' + item.id} mode='selector' range={maskTitles} onChange={this.onEffChange} style='width:100%;height:100%' value={selIndexEff}>
             <View className='itemcontextCate'>
@@ -515,6 +511,12 @@ export default class Index extends Component {
             </View>
           </Picker>
         </View>
+        <View id={'work_project@@' + item.id} onClick={this.changemessage} className='itemcontext'><Text>{item.work_project}</Text></View>
+        <View id={'work_content@@' + item.id} onClick={this.changemessage} className='itemcontext'><Text>{item.work_content}</Text></View>
+        <View id={'work_efficiency@@' + item.id} onClick={this.showrankmodel} className='itemcontext'>
+          <Text> {item.work_efficiency}</Text>
+        </View>
+        
 
         <View id={'work_myself@@' + item.id} onClick={this.showrankmodel} className='itemcontext'>
           <Text>{item.work_myself}</Text>
@@ -559,16 +561,13 @@ export default class Index extends Component {
          {this.state.lockstate  &&
         <View id={'length_time@@'+item.id}  className='itemcontext'>{item.length_time}</View>
          } */}
-        <View id={'category@@' + item.id} className='itemcontext'>
+        {/* <View id={'category@@' + item.id} className='itemcontext'>
           <Picker className='itemcontextCate' id={'category@@' + item.id} mode='selector' range={this.state.categorys} onChange={this.onCategoryChange} style='width:100%;height:100%' value={selIndex}>
             <View className='itemcontextCate'>
               {item.category}
             </View>
           </Picker>
-        </View>
-        <View id={'work_project@@' + item.id} onClick={this.changemessage} className='itemcontext'>{item.work_project}</View>
-        <View id={'work_content@@' + item.id} onClick={this.changemessage} className='itemcontext'>{item.work_content}</View>
-        <View id={'work_efficiency@@' + item.id} onClick={this.showrankmodel} className='itemcontext'>{item.work_efficiency}</View>
+        </View> */}
         <View id={'work_effect@@' + item.id} className='itemcontext'>
           <Picker id={'work_effect@@' + item.id} mode='selector' range={maskTitles} onChange={this.onEffChange} style='width:100%;height:100%' value={selIndexEff}>
             <View className='itemcontextCate'>
@@ -576,6 +575,10 @@ export default class Index extends Component {
             </View>
           </Picker>
         </View>
+        <View id={'work_project@@' + item.id} onClick={this.changemessage} className='itemcontext'>{item.work_project}</View>
+        <View id={'work_content@@' + item.id} onClick={this.changemessage} className='itemcontext'>{item.work_content}</View>
+        <View id={'work_efficiency@@' + item.id} onClick={this.showrankmodel} className='itemcontext'>{item.work_efficiency}</View>
+        
         <View id={'work_myself@@' + item.id} onClick={this.showrankmodel} className='itemcontext'>
           {item.work_myself}
         </View>
@@ -607,19 +610,20 @@ export default class Index extends Component {
 
       return <View className='tabletitle'>
         <View id={'length_time@@' + item.id} onClick={this.showrankmodel} className='itemcontext'>{item.length_time}</View>
-        <View id={'category@@' + item.id} className='itemcontext'>
+        {/* <View id={'category@@' + item.id} className='itemcontext'>
           <Picker className='itemcontextCate1' id={'category@@' + item.id} mode='selector' range={this.state.categorys} onChange={this.onCategoryChange} style='width:100%;height:100%' value={selIndex}>
             <View className='itemcontextCate'> {item.category} </View>
           </Picker>
-        </View>
-        <View id={'work_project@@' + item.id} onClick={this.changemessage} className='itemcontext'>{item.work_project}</View>
-        <View id={'work_content@@' + item.id} onClick={this.changemessage} className='itemcontext'>{item.work_content}</View>
-        <View id={'work_efficiency@@' + item.id} onClick={this.showrankmodel} className='itemcontext'>{item.work_efficiency}</View>
+        </View> */}
         <View id={'work_effect@@' + item.id} className='itemcontext'>
           <Picker id={'work_effect@@' + item.id} mode='selector' range={maskTitles} onChange={this.onEffChange} style='width:100%;height:100%' value={selIndexEff}>
             <View className='itemcontextCate'> {item.work_effect} </View>
           </Picker>
         </View>
+        <View id={'work_project@@' + item.id} onClick={this.changemessage} className='itemcontext'>{item.work_project}</View>
+        <View id={'work_content@@' + item.id} onClick={this.changemessage} className='itemcontext'>{item.work_content}</View>
+        <View id={'work_efficiency@@' + item.id} onClick={this.showrankmodel} className='itemcontext'>{item.work_efficiency}</View>
+        
         <View id={'work_myself@@' + item.id} onClick={this.showrankmodel} className='itemcontext'>
           {item.work_myself}
         </View>
@@ -1283,39 +1287,89 @@ export default class Index extends Component {
           if (field == "daily_sum") {
             this.state.twodayago_ext.daily_sum = this.state.value;
           } else {
-            let twodayago_data = this.state.twodayago_data
+            let twodayago_data = this.state.twodayago_data_full
             for (let i = 0; i < twodayago_data.length; i++) {
               if (twodayago_data[i].id == this.state.targhtid[1]) {
                 console.log('1111' + twodayago_data[i][this.state.targhtid[0]])
                 twodayago_data[i][this.state.targhtid[0]] = this.state.value;
               }
             }
+            let dataTemp = [];
+            twodayago_data.map((item)=>{
+              if (
+                (item.length_time == null || item.length_time == '') && 
+                (item.category == null || item.category == '') && 
+                (item.work_project == null || item.work_project == '') && 
+                (item.work_content == null || item.work_content == '') && 
+                (item.work_efficiency == null || item.work_efficiency == 0) && 
+                (item.work_effect == null || item.work_effect == 0) && 
+                (item.work_myself == null || item.work_myself == 0) 
+              ) {
+                return;
+              }
+              dataTemp.push(item);
+            });
+            this.state.twodayago_data = dataTemp;
           }
           break;
         case 1:
           if (field == "daily_sum") {
             this.state.onedayago_ext.daily_sum = this.state.value;
           } else {
-            let onedayago_data = this.state.onedayago_data
+            let onedayago_data = this.state.onedayago_data_full
             for (let i = 0; i < onedayago_data.length; i++) {
               if (onedayago_data[i].id == this.state.targhtid[1]) {
                 console.log('1111' + onedayago_data[i][this.state.targhtid[0]])
                 onedayago_data[i][this.state.targhtid[0]] = this.state.value;
               }
             }
+
+            let dataTemp = [];
+            onedayago_data.map((item)=>{
+              if (
+                (item.length_time == null || item.length_time == '') && 
+                (item.category == null || item.category == '') && 
+                (item.work_project == null || item.work_project == '') && 
+                (item.work_content == null || item.work_content == '') && 
+                (item.work_efficiency == null || item.work_efficiency == 0) && 
+                (item.work_effect == null || item.work_effect == 0) && 
+                (item.work_myself == null || item.work_myself == 0) 
+              ) {
+                return;
+              }
+              dataTemp.push(item);
+            });
+            this.state.onedayago_data = dataTemp;
           }
           break;
         case 2:
           if (field == "daily_sum") {
             this.state.today_ext.daily_sum = this.state.value;
           } else {
-            let today_data_temp = this.state.today_data
+            let today_data_temp = this.state.today_data_full
             for (let i = 0; i < today_data_temp.length; i++) {
               if (today_data_temp[i].id == this.state.targhtid[1]) {
                 console.log('1111' + today_data_temp[i][this.state.targhtid[0]])
                 today_data_temp[i][this.state.targhtid[0]] = this.state.value;
               }
             }
+
+            let dataTemp = [];
+            today_data_temp.map((item)=>{
+              if (
+                (item.length_time == null || item.length_time == '') && 
+                (item.category == null || item.category == '') && 
+                (item.work_project == null || item.work_project == '') && 
+                (item.work_content == null || item.work_content == '') && 
+                (item.work_efficiency == null || item.work_efficiency == 0) && 
+                (item.work_effect == null || item.work_effect == 0) && 
+                (item.work_myself == null || item.work_myself == 0) 
+              ) {
+                return;
+              }
+              dataTemp.push(item);
+            });
+            this.state.today_data = dataTemp;
           }
           break;
       }

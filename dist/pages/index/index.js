@@ -190,7 +190,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
           daily_sum: ''
         },
         categorys: ['开拓', '驱动', '实施', '维护', "协同"],
-        itemtitles: ['时长(分)', '类别', '工作项目', '工作内容及说明', '效率自评', '对应目标', '驱动自评'],
+        itemtitles: ['时长(分)', /*'类别',*/'对应目标', '工作项目', '工作内容及说明', '效率自评', '驱动自评'],
         moment: ['9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00'],
         showmodel: false,
         modeldatatitle: '标题',
@@ -198,11 +198,11 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         idMname: {
           work_start_time: '开始时间',
           length_time: '时长(分)',
-          category: '类别',
+          // category: '类别',
+          work_effect: '对应目标',
           work_project: '工作项目',
           work_content: '工作内容及说明',
           work_efficiency: '效率自评',
-          work_effect: '对应目标',
           work_myself: '驱动自评'
         },
         targhtid: [],
@@ -995,39 +995,63 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
             if (field == "daily_sum") {
               _this9.state.twodayago_ext.daily_sum = _this9.state.value;
             } else {
-              var twodayago_data = _this9.state.twodayago_data;
+              var twodayago_data = _this9.state.twodayago_data_full;
               for (var i = 0; i < twodayago_data.length; i++) {
                 if (twodayago_data[i].id == _this9.state.targhtid[1]) {
                   console.log('1111' + twodayago_data[i][_this9.state.targhtid[0]]);
                   twodayago_data[i][_this9.state.targhtid[0]] = _this9.state.value;
                 }
               }
+              var dataTemp = [];
+              twodayago_data.map(function (item) {
+                if ((item.length_time == null || item.length_time == '') && (item.category == null || item.category == '') && (item.work_project == null || item.work_project == '') && (item.work_content == null || item.work_content == '') && (item.work_efficiency == null || item.work_efficiency == 0) && (item.work_effect == null || item.work_effect == 0) && (item.work_myself == null || item.work_myself == 0)) {
+                  return;
+                }
+                dataTemp.push(item);
+              });
+              _this9.state.twodayago_data = dataTemp;
             }
             break;
           case 1:
             if (field == "daily_sum") {
               _this9.state.onedayago_ext.daily_sum = _this9.state.value;
             } else {
-              var onedayago_data = _this9.state.onedayago_data;
+              var onedayago_data = _this9.state.onedayago_data_full;
               for (var _i7 = 0; _i7 < onedayago_data.length; _i7++) {
                 if (onedayago_data[_i7].id == _this9.state.targhtid[1]) {
                   console.log('1111' + onedayago_data[_i7][_this9.state.targhtid[0]]);
                   onedayago_data[_i7][_this9.state.targhtid[0]] = _this9.state.value;
                 }
               }
+              var _dataTemp = [];
+              onedayago_data.map(function (item) {
+                if ((item.length_time == null || item.length_time == '') && (item.category == null || item.category == '') && (item.work_project == null || item.work_project == '') && (item.work_content == null || item.work_content == '') && (item.work_efficiency == null || item.work_efficiency == 0) && (item.work_effect == null || item.work_effect == 0) && (item.work_myself == null || item.work_myself == 0)) {
+                  return;
+                }
+                _dataTemp.push(item);
+              });
+              _this9.state.onedayago_data = _dataTemp;
             }
             break;
           case 2:
             if (field == "daily_sum") {
               _this9.state.today_ext.daily_sum = _this9.state.value;
             } else {
-              var today_data_temp = _this9.state.today_data;
+              var today_data_temp = _this9.state.today_data_full;
               for (var _i8 = 0; _i8 < today_data_temp.length; _i8++) {
                 if (today_data_temp[_i8].id == _this9.state.targhtid[1]) {
                   console.log('1111' + today_data_temp[_i8][_this9.state.targhtid[0]]);
                   today_data_temp[_i8][_this9.state.targhtid[0]] = _this9.state.value;
                 }
               }
+              var _dataTemp2 = [];
+              today_data_temp.map(function (item) {
+                if ((item.length_time == null || item.length_time == '') && (item.category == null || item.category == '') && (item.work_project == null || item.work_project == '') && (item.work_content == null || item.work_content == '') && (item.work_efficiency == null || item.work_efficiency == 0) && (item.work_effect == null || item.work_effect == 0) && (item.work_myself == null || item.work_myself == 0)) {
+                  return;
+                }
+                _dataTemp2.push(item);
+              });
+              _this9.state.today_data = _dataTemp2;
             }
             break;
         }
@@ -1160,7 +1184,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
   }]);
 
   return Index;
-}(_index.Component), _class.properties = {}, _class.$$events = ["showrankmodel", "onCategoryChange", "changemessage", "onEffChange", "touchstart", "scrollmovex", "scrollmovey", "scrollmove", "tomaintask", "goregister", "handleClick", "changemessage_ext", "closeModal", "handleChange", "updatemessage", "changerank", "closeshowModal"], _temp2);
+}(_index.Component), _class.properties = {}, _class.$$events = ["showrankmodel", "onEffChange", "changemessage", "touchstart", "scrollmovex", "scrollmovey", "scrollmove", "tomaintask", "goregister", "handleClick", "changemessage_ext", "closeModal", "handleChange", "updatemessage", "changerank", "closeshowModal"], _temp2);
 exports.default = Index;
 
 Component(require('../../npm/@tarojs/taro-weapp/index.js').default.createComponent(Index, true));
